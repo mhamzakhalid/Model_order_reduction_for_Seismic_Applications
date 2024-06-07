@@ -1,4 +1,6 @@
 # MOR_For_Seismic_Applications_Script_Files
+
+[![DOI](https://zenodo.org/badge/811891525.svg)](https://zenodo.org/doi/10.5281/zenodo.11520031)
 ------
 README
 ------
