@@ -41,7 +41,7 @@ Ntrain: This is the size of the test set. We use 512.
 ROM_POD_s.mat
 ROM_Greedy_s.mat
 
-Outputs: 
+Inputs: 
 
 ROM_POD_s.mat (For the POD method)
 ROM_SPOD_s.mat (For the S-POD method)
