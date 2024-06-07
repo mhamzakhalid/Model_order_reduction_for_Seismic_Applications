@@ -5,8 +5,7 @@ addpath('FOM_DATA')
 HFM = readmeshfiles();
 var_para = getvariables(HFM);
 % Assembling the discrete problem
-%HFM = assemblesystem(HFM);
-HFM = assemblesystemv2(HFM,var_para);
+HFM = assemblesystem(HFM,var_para);
 
 HFM.Rec = getRecvector(HFM,var_para);
 HFM.f = getSourcevector(HFM,var_para);
