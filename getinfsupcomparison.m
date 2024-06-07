@@ -23,8 +23,8 @@ source_Riesz=Q_X*(U_X\(L_X\(P_X*bi_HFM)));
 fdualnorm = sqrt(abs(bi_HFM'*source_Riesz));
 
 addpath('Reduced_basis_methods/')
-s_Reals = round(linspace(0.1,2,5),1);
-s_imag = round(linspace(0.1,20,5),1);
+s_Reals = round(linspace(0.1,2,5),2);
+s_imag = round(linspace(0.1,20,5),2);
 beta_h = zeros(numel(s_Reals),numel(s_imag));
 beta_lb = beta_h;
 beta_star = beta_h;
