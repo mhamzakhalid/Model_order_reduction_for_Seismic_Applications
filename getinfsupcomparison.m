@@ -39,7 +39,7 @@ end
 rmpath('Reduced_basis_methods/')
 
 save('Inf_sup.mat','beta_h','beta_star','beta_lb')
-%%
+%% Plotting of the figure
 
 figure(1)
 subplot(1,3,1)
@@ -48,14 +48,12 @@ xlabel('s_R')
 ylabel('s_I')
 title('beta_h')
 set(gca, 'FontName', 'Arial','FontSize',29)
-%set(gcf,'position',[200,550,550,500])
 subplot(1,3,2)
 heatmap(round(s_imag,2),round(s_Reals,2),round(beta_lb,2))
 xlabel('s_R')
 ylabel('s_I')
 title('beta_lb')
 set(gca, 'FontName', 'Arial','FontSize',29)
-%set(gcf,'position',[200,550,550,500])
 subplot(1,3,3)
 heatmap(round(s_imag,2),round(s_Reals,2),round(beta_star,2))
 xlabel('$s_R$')
@@ -68,7 +66,7 @@ set(gcf,'position',[200,550,1550,500])
 saveas(gcf,'Inf_sup_comparison.png')
 
 
-%close all
+close all
 
 
 
