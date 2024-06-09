@@ -238,10 +238,8 @@ switch CaseROM
         figure(1)
         bids = 10:var_para.Nkmax;
         mark_id = round(linspace(1,var_para.Nkmax-10,15));
-        subplot(1,3,1)
         semilogy(bids,ROM_PODGreedy_m_C2.maxEstimatorm(bids)*scalingEstimator,'-v','Color',cl_colorsdark{1},'LineWidth',3,'Markersize',12,'Markerindices',mark_id)
         hold on
-        semilogy(bids,ROM_PODGreedy_m_C2.maxTruem(bids)*scalingUpperbound,'-.>','Color',cl_colorsdark{2},'LineWidth',3,'Markersize',12,'Markerindices',mark_id)
         semilogy(bids,ROM_PODGreedy_m_C2.maxTrueL2m(bids),':<','Color',cl_colorsdark{3},'LineWidth',3,'Markersize',12,'Markerindices',mark_id)
         hold off
         set(gca, 'FontName', 'Arial','FontSize',29)
