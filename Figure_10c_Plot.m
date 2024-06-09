@@ -101,7 +101,7 @@ end
 
 %% Computing errors
 
-load('ROM_PODGreedy_m_C2.mat','ROM_PODGreedy_m')
+load('ROM_PODGreedy_m_C2.mat','ROM_PODGreedy_m_C2')
 Nbasis = size(ROM_PODGreedy_m.V,2);
 basis_ids = round(linspace(2,Nbasis,15));
 Nb = numel(basis_ids);
