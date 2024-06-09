@@ -73,7 +73,7 @@ POD_Coarse.png (Illustration of results)
 % Note: The codes for these cases can take several days to complete. It is recommended to use many parallel processors.
 ## To reproduce Figure 8
 
-Use : run(Figure_8_Plot(CaseROM,Pchange,Ntrain,Nkmax))
+Use : Figure_8_Plot(CaseROM,Pchange,Ntrain,Nkmax)
 
 #Inputs For Case 1
 CaseROM =  1 (Case as in the paper)
@@ -86,7 +86,7 @@ ii- ROM_Greedy_m.mat', (ROM for POD-Greedy algorithm, name file is 'ROM_Greedy_m
 iii - Reduction_PODGreedy_and_Greedy_Fig8.png (Illustration of the results for the effectivity and true error)
 
 ## To reproduce Figure 9a
-Use : run(Figure_9a_Plot(CaseROM,Pchange,Ntest))
+Use : Figure_9a_Plot(CaseROM,Pchange,Ntest)
 #Required files
 ROM_PODGreedy_m.mat
 ROM_Greedy_m.mat
@@ -99,7 +99,7 @@ Errors_reduction_m.mat (L2 Errors named as 'Error_seismoTDL2_PODGreedy' and 'Err
 Reduction_Test_PODGreedy_and_Greedy_Fig9a.png (Illustration of the maximum error convergence)
 
 ## To reproduce Figure 9b and 9c
-Use: run(Figure_9bc_Plot())
+Use: Figure_9bc_Plot()
 #Required files
 ROM_PODGreedy_m.mat
 ROM_Greedy_m.mat
@@ -128,18 +128,18 @@ Errors_reduction_m_Case2.mat,(Error file containing 'basis_ids' and 'Error_seism
 Reduction_Test_PODGreedy_Case2_Fig10c.png (Illustration of mean error convergence)
 
 ## To find the optimal parameters use
-Use: run(Compute_Optimal_Parameters())
+Use: Compute_Optimal_Parameters()
 Output
 s0 = [wr wi] (Vector containg optimal parameters)
 
 ## To find C_W for the a posteriori error estimator
-Use: run(getCW())
+Use: getCW()
 Output:
 CW (scalar)
 
 ## To compare inf-sup constants
 
-run(getinfsupcomparison())
+Use: getinfsupcomparison()
 
 Output:
 Inf_sup_comparison.png 
