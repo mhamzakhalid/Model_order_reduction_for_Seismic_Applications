@@ -112,6 +112,7 @@ for wid = 1:numel(width_all)
     % Ploting the Estimator for the Greedy algorithm for choices of width = [1pi 1.5pi 2pi]
     subplot(1,3,2)
     semilogy(basis_id_wid,ROM_Greedy{wid}.maxDelta(basis_id_wid),'-','Marker',marker_style{wid},'Color',cl_colorsdark{wid},'Linewidth',3.5,'Markersize',15)
+    hold on
     xlim([0 200])
     yticks([1e-3 1e-1  1e2 1e4])
     ylim([1e-3 1e4])
