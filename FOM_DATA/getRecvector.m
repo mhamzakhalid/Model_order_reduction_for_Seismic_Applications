@@ -2,7 +2,7 @@
 %%%%% a receiver location (x0r,y0r)
 
 
-function f = gerRecvector(HFM,var_para)
+function f = getRecvector(HFM,var_para)
 % Defining the l_i using a Gaussian function
 G =@(x,y,x0,y0,sigma) 1/(2*pi*var_para.sigm^2)*exp(-( (x-x0).^2 + (y-y0).^2)./(2*sigma^2) );
 
