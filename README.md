@@ -13,25 +13,24 @@ by R. Hawkins, M.H. Khalid, K. Smetana, M. Schlottbom.
 
 
 All scripts are tested with MATLAB 2023b.
-# ATTENTION: Most of the code is extremely time consuming as, for instance, the reduction in the m-parameters requires very many full order model computations to compare errors.
-# (The code will probably run for several days depending on the computational architecture.)
+ATTENTION: Most of the code is extremely time consuming as, for instance, the reduction in the m-parameters requires very many full order model computations to compare errors.
+(The code will probably run for several days depending on the computational architecture.)
 
 ## To reproduce Figure 1
-Use: run('Figure_1_Plot.m')
-i- Here, 'optimals0_Ricker.mat' has been pre-computed optimal parameters that we use for the numerical Laplace inversion via Weeks’ method)
-Output: 
-Result_Fig1.png (Illustration of the results)
+%   - Command: run('Figure_1_Plot.m')
+%   - Here, 'optimals0_Ricker.mat' has been pre-computed optimal parameters that we use for the numerical Laplace inversion via Weeks’ method
+%   - Output: Result_Fig1.png (Illustration of the results)
+%   - CaseID: '1' in the main script
 
-## To reproduce Figure 3
-Use: run('Figure_3_Plot(alpha,Ntrain)’)
-Inputs: 
-alpha: A vector [1.0pi 1.5pi 2.0pi] or a scalar as 1.0pi. 
-Ntrain: This is the size of the training set. We use 1024.
-Outputs: 
-ROM_POD_s.mat (For the POD method)
-ROM_SPOD_s.mat (For the S-POD method)
-ROM_Greedy_s.mat (For the Greedy algorithm)
-Reduction_POD_and_Greedy_Fig3.png (Plotted results) 
+## To reproduce Figure 4
+Figure 4:
+%   - Functionfile: Figure_4_Plot(alpha, Ntrain)
+%   - Inputs:
+%       alpha: A vector [1.0*pi, 1.5*pi, 2.0*pi] or a number (e.g., 1.0*pi)
+%       Ntrain: 1024 (training set size)
+%   - Outputs: ROM_POD_s.mat, ROM_SPOD_s.mat, ROM_Greedy_s.mat, 
+%              Reduction_POD_and_Greedy_Fig4.png
+%   - CaseID: '4'in the main script
 
 ## To reproduce Figure 4
 Use: run('Figure_3_Plot(alpha,Ntrain)’)
