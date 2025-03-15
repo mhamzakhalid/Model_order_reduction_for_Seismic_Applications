@@ -157,7 +157,7 @@ hold off
 legend boxoff
 set(gca, 'FontName', 'Arial','FontSize',29)
 
-saveas(gcf,'Reduction_Test_PODGreedy_Case2_Fig10c.png')
+saveas(gcf,'Reduction_Test_PODGreedy_Case2_Fig12c.png')
 
 end
 
