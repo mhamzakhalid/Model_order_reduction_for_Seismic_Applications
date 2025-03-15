@@ -132,7 +132,7 @@ switch CaseID
         %%%% Inputs for Figure 4:
         alpha = [1.0*pi, 1.5*pi, 2.0*pi]; % or a number (e.g., alpha=1.0*pi)
         Ntrain = 1024; % Size of training set
-        Figure_3_Plot(alpha, Ntrain) % Respective function file
+        Figure_4_Plot(alpha, Ntrain) % Respective function file
         %%%% Outputs: For each alpha_id from 1 2 3 (depending on alpha)
         % ROM_POD_s.mat,  POD_s basis func.  as ROM_POD{alpha_id}.V 
         % ROM_SPOD_s.mat, Greedy_s basis func. as ROM_Greedy{alpha_id}.V 
