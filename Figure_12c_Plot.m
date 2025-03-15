@@ -150,7 +150,7 @@ figure(1)
 set(gcf,'position',[200,550,550,500])
 
 errorbarlog(basis_ids,mean(Error_seismoTDL2_PODGreedy,1),std(Error_seismoTDL2_PODGreedy,1),':','linewidth',3,'Markersize',8)
-legend('POD-Greedy algorithm (Case 2)','Interpreter','latex')
+legend('POD$_s$-Greedy$_m$ algorithm (Case 2)','Interpreter','latex')
 xlabel('No. of RB functions: $N_k$','Interpreter','latex')
 ylabel('Mean$_{m\in\Xi_{t}}[\|\hat{e}_k(m)\|_{L^2}]_{rel}$','Interpreter','latex')
 hold off
