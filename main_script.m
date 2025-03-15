@@ -80,8 +80,8 @@
 %   - CaseID: '12b'
 %
 % Figure 12 (c) ~ - Test ROM for Case 2:
-%   - Functionfile:Figure_12c_Plot(Pchange,ROM_PODGreedy_m_C2);
-%   - Input: Pchange = 10 (or 5), ROM_PODGreedy_m_C2 from CaseID 12b
+%   - Functionfile:Figure_12c_Plot(Pchange,ROM_PODGreedy_m_C2,Ntest);
+%   - Input: Pchange = 10 (or 5), ROM_PODGreedy_m_C2 from CaseID 12b, Ntest = 128
 %   - Outputs: Errors_reduction_m_Case2.mat, Reduction_Test_PODGreedy_Case2_Fig12c.png
 %   - CaseID: '12c'
 % 
@@ -233,9 +233,10 @@ switch CaseID
         disp('Running Figure 12c ROM test for Case 2...');
         % Input for Figure 10c:
         Pchange = 10;  % Alternatively, Pchange can be 5
+        Ntest = 128;
         load('ROM_PODGreedy_m_C2.mat','ROM_PODGreedy_m_C2') % First compute ROM_PODGreedy_m_C2 in Case 12b
         
-        Figure_12c_Plot(Pchange,ROM_PODGreedy_m_C2);
+        Figure_12c_Plot(Pchange,ROM_PODGreedy_m_C2,Ntest);
         % Outputs: Errors_reduction_m_Case2.mat, (Data)
         %          Reduction_Test_PODGreedy_Case2_Fig12c.png (Illustration of results)
     case '10'
