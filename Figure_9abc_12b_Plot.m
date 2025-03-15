@@ -1,7 +1,5 @@
 function Figure_9abc_12b_Plot(CaseROM,Pchange,Ntrain,Nkmax)    
-% Pchange = 0.30
-% CaseROM = 'Case 1'
-%parpool(8)
+
 fprintf('Running Case %d with %2.2f Change\n',CaseROM,Pchange)
 CaseROM = string(CaseROM);
 
@@ -90,8 +88,6 @@ var_para.lam_max = maxLam;
 
 var_para.Ntrain = Ntrain;
 %% Training set
-% The solution for the following random parameters have already been computed
-
 switch CaseROM
     case '1'
         rndvar = rand(var_para.Ntrain,2); 
