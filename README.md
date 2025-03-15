@@ -18,38 +18,65 @@ ATTENTION: Most of the code is extremely time consuming as, for instance, the re
 
 ## To reproduce Figure 1
 %   - Command: run('Figure_1_Plot.m')
+
 %   - Here, 'optimals0_Ricker.mat' has been pre-computed optimal parameters that we use for the numerical Laplace inversion via Weeks’ method
+
 %   - Output: Result_Fig1.png (Illustration of the results)
+
 %   - CaseID: '1' in the main script
 
 ## To reproduce Figure 4
 Figure 4:
 %   - Functionfile: Figure_4_Plot(alpha, Ntrain)
+
 %   - Inputs:
+
 %       alpha: A vector [1.0*pi, 1.5*pi, 2.0*pi] or a number (e.g., 1.0*pi)
+
 %       Ntrain: 1024 (training set size)
+
 %   - Outputs: ROM_POD_s.mat, ROM_SPOD_s.mat, ROM_Greedy_s.mat, 
+
 %              Reduction_POD_and_Greedy_Fig4.png
+
 %   - CaseID: '4'in the main script
 
-## To reproduce Figure 4
-Use: run('Figure_3_Plot(alpha,Ntrain)’)
-Inputs: 
-alpha: A vector as [1.0pi 1.5pi 2.0pi]. 
-Ntrain: This is the size of the test set. We use 512.
+## To reproduce Figure 5
+%   - Functionfile: Figure_5_Plot(alpha, Ntest,ROM_POD,ROM_Greedy,ROM_SPOD)
 
-#Required files:  
-ROM_POD_s.mat
-ROM_Greedy_s.mat
+%   - Inputs:
 
-Inputs: 
+%       alpha: [1.0*pi, 1.5*pi, 2.0*pi]
 
-ROM_POD_s.mat (For the POD method)
-ROM_SPOD_s.mat (For the S-POD method)
-ROM_Greedy_s.mat (For the Greedy algorithm)
-Reduction_POD_and_Greedy_Fig3.png (Plotted results) 
+%       Ntest: 512 Size of the test set
 
-Outputs: 
+%       ROMs: ROM_POD,ROM_Greedy,ROM_SPOD from CaseID 4.
+
+%   - Required Files: ROM_POD_s.mat, ROM_Greedy_s.mat
+
+%   - Outputs: % Data files containing error values
+
+%              ROM_POD_Test_FD.mat, 
+
+%              ROM_Greedy_Test_FD.mat, 
+
+%              ROM_Greedy_Test_TD.mat,
+
+%              ROM_POD_Test_TD.mat, 
+
+%              ROM_SPOD_Test_TD.mat, 
+
+%              % Illutration of the results
+
+%              Reduction_POD_and_Greedy_Fig4.png, (Figure 5 in the
+%              manuscript)
+
+%              Reduction_POD_and_SPOD_Supplementary.png (Supplementary
+%              Figure SM1)
+
+%   - CaseID: '5'
+
+Additional Description: 
 
 i- ROM_POD_Test_FD.mat (This contains frequency domain errors for the POD over a uniform random test set different from the training set. The .mat file contains 'ErrorX_rel_POD', 'ErrorX_Omega_POD', 'Test_set' ) 
 ii -ROM_Greedy_Test_FD.mat (This contains frequency domain errors for the greedy algorithm over a uniform random test set that is different from the training set. The .mat file contains 'ErrorX_rel_Greedy','ErrorX_Omega_Greedy','Test_set') 
@@ -58,9 +85,6 @@ iv- ROM_Greedy_Test_TD.mat (This contains time domain errors for the greedy algo
 v - ROM_POD_Test_TD.mat (This contains time domain errors for the POD over 5 uniform receivers. The .mat file contains 'error_seismo_POD') 
 vi - ROM_SPOD_Test_TD.mat ( contains error_seismo_SPOD )
 
-vii -Reduction_POD_and_Greedy_Fig4.png (Illustration of POD and Greedy algorithm results)
-
-viii - Reduction_POD_and_SPOD_Supplementary.png (Illustration POD vs SPOD comparison as mentioned in supplementary)
 
 
 # To reproduce Figure 7 b and c (POD over a coarse sample)
