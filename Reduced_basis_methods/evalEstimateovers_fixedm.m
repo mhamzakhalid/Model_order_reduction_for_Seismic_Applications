@@ -1,4 +1,4 @@
-function deltak_LF = evalEstimateovers_src(s_LF,uk,dqq,Eqq,res_ff,THETA_F_Vec,beta_lb)
+function deltak_LF = evalEstimateovers_fixedm(s_LF,uk,dqq,Eqq,res_ff,THETA_F_Vec,beta_lb)
 Ns_LF = length(s_LF);
  
  % size 2 x Nz
