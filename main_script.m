@@ -115,7 +115,7 @@ fprintf('  11b  : Figure 11b (ROM seismogram comparison with Newmark-beta)\n');
 fprintf(' 12b   :  Figure 12b (ROM construct for Case 2)\n');
 fprintf(' 12c   : Figure 12c (ROM test for Case 2)\n');
 
-% Prompt user for input; the 's' flag ensures the input is treated as a string
+% User input. the 's' flag ensures the input is treated as a string
 userInput = input('Enter the desired CaseID as e.g, 8bc: ', 's');
 CaseID = userInput;  % This converts the input to a string if it isn't already
 
