@@ -24,7 +24,7 @@ Ki_HFMlam = HFM.Ki_lam; Ki_HFMmu = HFM.Ki_mu; Rec = HFM.Rec;
 % Loading optimal parameters for Weeks method
 addpath('DATA_for_s/')
 load('optimals0_Ricker.mat')
-var_para.s0 =s_optROM_Ricker; % s_optROM_Ricker; %[wr , wi] % Use [0.14 14.3] for longer than 20 final time (or recompute)
+var_para.s0 =s_optROM_Ricker; % s_optROM_Ricker; %[wr , wi] 
 var_para.Nz = 608; % Number of frequency samples and Laguerre polynomials
 wr = var_para.s0(1);
 wi = var_para.s0(2);
