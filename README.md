@@ -87,16 +87,17 @@ vi - ROM_SPOD_Test_TD.mat ( contains error_seismo_SPOD )
 
 
 
-# To reproduce Figure 7 b and c (POD over a coarse sample)
-Use: run('Figure_7_bc_Plot.m')
+# To reproduce Figure 8 b and c (POD over a coarse sample)
+Use: run('Figure_8_bc_Plot.m')
 Output:
 
 POD_Coarse.png (Illustration of results)
+- CaseID: '8bc'
+  
+% Note: The codes for the following cases can take several days to complete. It is recommended to use many cores.
+## To reproduce Figure 9
 
-% Note: The codes for these cases can take several days to complete. It is recommended to use many parallel processors.
-## To reproduce Figure 8
-
-Use : Figure_8_Plot(CaseROM,Pchange,Ntrain,Nkmax)
+Use: Figure_9abc_12b_Plot(CaseROM,Pchange,Ntrain,Nkmax)
 
 #Inputs For Case 1
 CaseROM =  1 (Case as in the paper)
@@ -106,11 +107,12 @@ Nkmax = 300 (Maximum number of RB functions)
 #Outputs for Case 1
 i- 'ROM_PODGreedy_m.mat' (ROM for POD-Greedy algorithm, name file is ROM_PODGreedy_m that is a struct containing maximum values of estimator/true_error/upperbound)
 ii- ROM_Greedy_m.mat', (ROM for POD-Greedy algorithm, name file is 'ROM_Greedy_m that is a struct containing maximum values of estimator/true_error/upperbound)
-iii - Reduction_PODGreedy_and_Greedy_Fig8.png (Illustration of the results for the effectivity and true error)
-
-## To reproduce Figure 9a
-Use : Figure_9a_Plot(CaseROM,Pchange,Ntest)
-#Required files
+iii - Reduction_PODGreedy_and_Greedy_Fig9.png (Illustration of the results for the effectivity and true error)
+- Case ID = 9
+  
+## To reproduce Figure 11a
+Use : Figure_11a_Plot(CaseROM, Pchange, Ntest,ROM_PODGreedy_m,ROM_Greedy_m, Nbasis)
+#Required files from Case ID 9 
 ROM_PODGreedy_m.mat
 ROM_Greedy_m.mat
 Inputs:
