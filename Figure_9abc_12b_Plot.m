@@ -1,4 +1,4 @@
-function Figure_8_Plot(CaseROM,Pchange,Ntrain,Nkmax)    
+function Figure_9abc_12b_Plot(CaseROM,Pchange,Ntrain,Nkmax)    
 % Pchange = 0.30
 % CaseROM = 'Case 1'
 %parpool(8)
@@ -190,7 +190,8 @@ switch CaseROM
         legend boxoff
         ylabel('$\max_{m\in\Xi_m} [e_k(m)]_{rel}$','Interpreter','latex')
         ylim([1e-4 1e7])
-        
+        title('POD$_s$-Greedy$_m$','Interpreter','latex')
+
         % Figure 8 (a) Effectivity
         subplot(1,3,2)
         
@@ -224,7 +225,8 @@ switch CaseROM
         legend boxoff
         ylabel('$\max_{m\in\Xi_m} [e_k(m)]_{rel}$','Interpreter','latex')
         ylim([1e-4 1e7])
-        
+        title('Greedy$_{(s,m)}$','Interpreter','latex')
+
         set(gcf,'position',[200,550,1550,500])
         saveas(gcf,'Reduction_PODGreedy_and_Greedy_Fig9.png')
         close all
@@ -256,9 +258,4 @@ switch CaseROM
 end
 rmpath('FOM_DATA')
 rmpath('Reduced_basis_methods/')
-
-
-
-
-
 end
