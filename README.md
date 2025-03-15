@@ -16,6 +16,8 @@ All scripts are tested with MATLAB 2023b.
 ATTENTION: Most of the code is extremely time consuming as, for instance, the reduction in the m-parameters requires very many full order model computations to compare errors.
 (The code will probably run for several days depending on the computational architecture.)
 
+## Note:The numerical experiments can be executed from the main_script.m file. 
+A description of the available function files is stated below. 
 ## To reproduce Figure 1
 %   - Command: run('Figure_1_Plot.m')
 
@@ -68,7 +70,7 @@ Figure 4:
 
 %              % Illutration of the results
 
-%              Reduction_POD_and_Greedy_Fig4.png, (Figure 5 in the
+%              Reduction_POD_and_Greedy_Fig5.png, (Figure 5 in the
 %              manuscript)
 
 %              Reduction_POD_and_SPOD_Supplementary.png (Supplementary
@@ -119,20 +121,22 @@ Inputs:
 CaseROM = 1; (Case 1)
 Pchange = 30; (Percentage change)
 Ntest = 128; (No of random parameters for testing)
+Nbasis = size(ROM_PODGreedy_m.V,2); (Size of ROM)
 Outputs:
 Errors_reduction_m.mat (L2 Errors named as 'Error_seismoTDL2_PODGreedy' and 'Error_seismoTDL2_Greedy')
-Reduction_Test_PODGreedy_and_Greedy_Fig9a.png (Illustration of the maximum error convergence)
+Reduction_Test_PODGreedy_and_Greedy_Fig11a.png (Illustration of the maximum error convergence)
 
-## To reproduce Figure 9b and 9c
-Use: Figure_9bc_Plot()
+## To reproduce Figure 11b
+Use: Figure_11b_Plot(ROM_PODGreedy_m,ROM_Greedy_m,Nbasis);
 #Required files
 ROM_PODGreedy_m.mat
 ROM_Greedy_m.mat
+Nbasis = size(ROM_PODGreedy_m.V,2); (Size of ROM)
 Output:
 SeismogramHcompTD_PODGreedy_and_Greedy_Fig9bc.png (Illustration of the seismograms and errors)
 
-## To reproduce Figure 10 b (For Case 2)
-Use: run('Figure_8_Plot(CaseROM,Pchange,Ntrain,Nkmax)')
+## To reproduce Figure 12 b (For Case 2)
+Use: Figure_9abc_12b_Plot(CaseROM, Pchange, Ntrain, Nkmax);
 Inputs: 
 CaseROM = 2;
 Pchange = 5; or Pchange = 10;
@@ -140,17 +144,17 @@ Ntrain = 512;
 Nkmax = 450;
 Output: 
 ROM_PODGreedy_m_C2.mat (The reduced order models named as 'ROM_PODGreedy_m_C2')
-Reduction_PODGreedy_Fig10C2.png (Illustration of the ROM maximum error convergence)
+Reduction_PODGreedy_Fig12C2.png (Illustration of the ROM maximum error convergence)
 
-## To reproduce Figure 10 c (Test ROM for Case 2)
-Use: run('Figure_10c_Plot(Pchange)')
+## To reproduce Figure 12 c (Test ROM for Case 2)
+Use: Figure_12c_Plot(Pchange,ROM_PODGreedy_m_C2);
 #Required files
 ROM_PODGreedy_m_C2.mat
 Input: 
 Pchange = 10 (Or Pchange = 5)
 Output: 
 Errors_reduction_m_Case2.mat,(Error file containing 'basis_ids' and 'Error_seismoTDL2_PODGreedy')
-Reduction_Test_PODGreedy_Case2_Fig10c.png (Illustration of mean error convergence)
+Reduction_Test_PODGreedy_Case2_Fig12c.png (Illustration of mean error convergence)
 
 ## To find the optimal parameters use
 Use: Compute_Optimal_Parameters()
