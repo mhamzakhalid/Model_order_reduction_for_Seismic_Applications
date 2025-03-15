@@ -148,12 +148,14 @@ switch CaseID
         % Inputs for Figure 5:
         alpha = [1.0*pi, 1.5*pi, 2.0*pi];
         Ntrain = 512;
-        Figure_5_Plot(alpha, Ntrain);
+
         % Ensure the following files are computed from CaseID 4
          load('ROM_POD_s.mat','ROM_POD')
          load('ROM_Greedy_s.mat','ROM_Greedy')
          load('ROM_SPOD_s.mat','ROM_SPOD')
-         
+                         
+        Figure_5_Plot(alpha, Ntrain,ROM_POD,ROM_Greedy,ROM_SPOD)
+
         % Outputs: Frequency domain as FD and time domain as TD
         %'ROM_POD_Test_FD.mat' contains 'ErrorX_rel_POD','ErrorX_Omega_POD','Test_set'
         %'ROM_Greedy_Test_FD.mat' contains'ErrorX_rel_Greedy','ErrorX_Omega_Greedy','Test_set' 
