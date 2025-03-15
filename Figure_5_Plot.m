@@ -1,4 +1,4 @@
-function Figure_4_Plot(width_all,Ntest)
+function Figure_5_Plot(width_all,Ntest,ROM_POD,ROM_Greedy,ROM_SPOD)
 
 %parpool(8)
 %% Input Parameters 
@@ -22,21 +22,15 @@ ldualnorm = sqrt(abs(Rec'*Output_Riesz));
 source_Riesz=Q_X*(U_X\(L_X\(P_X*bi_HFM)));
 fdualnorm = sqrt(abs(bi_HFM'*source_Riesz));
 
-% width_all = [1*pi 1.5*pi];%[1.0 1.5 2.0]*pi;
 
-%%
-% Ntest = 512;
+Nb_it = 15; %maximum iterations to reach the total number of RB functions
 
-Nb = 15; %maximum iterations to reach the total number of RB functions
-load('ROM_POD_s.mat','ROM_POD')
-load('ROM_Greedy_s.mat','ROM_Greedy')
-load('ROM_SPOD_s.mat','ROM_SPOD')
 
 Test_set = cell(numel(width_all),1);
-ErrorX_Omega_POD = zeros(Nb,Ntest,numel(width_all));
-ErrorX_rel_POD = zeros(Nb,Ntest,numel(width_all));
-ErrorX_Omega_Greedy = zeros(Nb,Ntest,numel(width_all));
-ErrorX_rel_Greedy = zeros(Nb,Ntest,numel(width_all));
+ErrorX_Omega_POD = zeros(Nb_it,Ntest,numel(width_all));
+ErrorX_rel_POD = zeros(Nb_it,Ntest,numel(width_all));
+ErrorX_Omega_Greedy = zeros(Nb_it,Ntest,numel(width_all));
+ErrorX_rel_Greedy = zeros(Nb_it,Ntest,numel(width_all));
 nb_val = [max(find(ROM_Greedy{1}.maxDelta>1e-1)) max(find(ROM_Greedy{2}.maxDelta>1e-1)) max(find(ROM_Greedy{3}.maxDelta>1e-1))];
 basis_id_wid = zeros(3,15);
 fprintf('Training set size: %d\n',Ntest)
@@ -45,7 +39,7 @@ for wid = 1:numel(width_all)
     width = width_all(wid);
     t0 = 4*pi/width;
     tolerance = 1e-4;
-    basis_id = round(linspace(2,nb_val(wid),Nb));
+    basis_id = round(linspace(2,nb_val(wid),Nb_it));
     basis_id_wid(wid,:) = basis_id;
     [smax] = getsmax(width_all(wid),tolerance,fdualnorm,ldualnorm,K_HFM,M_HFM,var_para.Amp,C_korn);
     fprintf('smax=%2.2f \n',smax)
@@ -196,10 +190,10 @@ end
     
     set(gca, 'FontName', 'Arial','FontSize',25)
     xlabel('No of RB functions: $N_k$','Interpreter','latex')
-    ylabel('Mean$_{s\in \tilde{I}_t} [e_k(s)]_{0}$','Interpreter','latex')
-    legend('POD (full domain) $\alpha=1.0\pi$','POD (Seismo) $\alpha=1.0\pi$',...
-            'POD (full domain)$\alpha=1.5\pi$','POD (Seismo) $\alpha=1.5\pi$',...
-            'POD (full domain) $\alpha=2.0\pi$','POD (Seismo) $\alpha=2.0\pi$',... 
+    ylabel('Mean$_{s\in \Xi_s} [e_k(s)]_{0}$','Interpreter','latex')
+    legend('POD$_s$ (full domain) $\alpha=1.0\pi$','POD$_s$ (Seismo) $\alpha=1.0\pi$',...
+            'POD$_s$ (full domain)$\alpha=1.5\pi$','POD$_s$ (Seismo) $\alpha=1.5\pi$',...
+            'POD$_s$ (full domain) $\alpha=2.0\pi$','POD$_s$ (Seismo) $\alpha=2.0\pi$',... 
             'interpreter','latex','Location','northeast','FontSize',20); 
     legend boxoff 
 
@@ -209,10 +203,10 @@ end
     
     set(gca, 'FontName', 'Arial','FontSize',25)
     xlabel('No of RB functions: $N_k$','Interpreter','latex')
-    ylabel('Mean$_{s\in \tilde{I}_t} [e_k(s)]_{0}$','Interpreter','latex')
-    legend('Greedy (full domain) $\alpha=1.0\pi$','Greedy (Seismo) $\alpha=1.0\pi$',...
-            'Greedy (full domain)$\alpha=1.5\pi$','Greedy (Seismo) $\alpha=1.5\pi$',...
-            'Greedy (full domain) $\alpha=2.0\pi$','Greedy (Seismo) $\alpha=2.0\pi$',... 
+    ylabel('Mean$_{s\in \Xi_s} [e_k(s)]_{0}$','Interpreter','latex')
+    legend('Greedy$_s$ (full domain) $\alpha=1.0\pi$','Greedy$_s$ (Seismo) $\alpha=1.0\pi$',...
+            'Greedy$_s$ (full domain)$\alpha=1.5\pi$','Greedy$_s$ (Seismo) $\alpha=1.5\pi$',...
+            'Greedy$_s$ (full domain) $\alpha=2.0\pi$','Greedy$_s$ (Seismo) $\alpha=2.0\pi$',... 
             'interpreter','latex','Location','northeast','FontSize',20); 
     legend boxoff 
 
@@ -220,16 +214,16 @@ end
     xlabel('No. of RB functions: $N_k$','Interpreter','latex')
     ylabel('Mean$_i [\|e_{k,i}\|_{L^2}]_{rel}$','Interpreter','latex')
     set(gca, 'FontName', 'Arial','FontSize',29)
-    legend('POD $\alpha=1.0\pi$','Greedy $\alpha=1.0\pi$',...
-            'POD $\alpha=1.5\pi$','Greedy $\alpha=1.5\pi$',...
-            'POD $\alpha=2.0\pi$','Greedy $\alpha=2.0\pi$',... 
+    legend('POD$_s$ $\alpha=1.0\pi$','Greedy$_s$ $\alpha=1.0\pi$',...
+            'POD$_s$ $\alpha=1.5\pi$','Greedy$_s$ $\alpha=1.5\pi$',...
+            'POD$_s$ $\alpha=2.0\pi$','Greedy$_s$ $\alpha=2.0\pi$',... 
             'interpreter','latex','Location','northeast','FontSize',20); 
     legend boxoff 
     hold off
 
 
 set(gcf,'position',[200,550,1550,500])
-saveas(gcf,'Reduction_POD_and_Greedy_Fig4.png')
+saveas(gcf,'Reduction_POD_and_Greedy_Fig5.png')
 
 close all
 
@@ -247,9 +241,9 @@ for wid=1:numel(width_all)
 end
     subplot(1,2,2)
     hold off
-    legend('POD $\alpha=1.0\pi$','SPOD $\alpha=1.0\pi$',...
-            'POD $\alpha=1.5\pi$','SPOD $\alpha=1.5\pi$',...
-            'POD $\alpha=2.0\pi$','SPOD $\alpha=2.0\pi$',... 
+    legend('POD$_s$ $\alpha=1.0\pi$','SPOD $\alpha=1.0\pi$',...
+            'POD$_s$ $\alpha=1.5\pi$','SPOD $\alpha=1.5\pi$',...
+            'POD$_s$ $\alpha=2.0\pi$','SPOD $\alpha=2.0\pi$',... 
             'interpreter','latex','Location','northeast','FontSize',20); 
     legend boxoff 
     hold off
@@ -258,9 +252,9 @@ end
     set(gca, 'FontName', 'Arial','FontSize',29)
 
     subplot(1,2,1)
-    legend('POD $\alpha=1.0\pi$','SPOD $\alpha=1.0\pi$',...
-            'POD $\alpha=1.5\pi$','SPOD $\alpha=1.5\pi$',...
-            'POD $\alpha=2.0\pi$','SPOD $\alpha=2.0\pi$',... 
+    legend('POD$_s$ $\alpha=1.0\pi$','SPOD $\alpha=1.0\pi$',...
+            'POD$_s$ $\alpha=1.5\pi$','SPOD $\alpha=1.5\pi$',...
+            'POD$_s$ $\alpha=2.0\pi$','SPOD $\alpha=2.0\pi$',... 
             'interpreter','latex','Location','northeast','FontSize',20); 
     legend boxoff 
     hold off
