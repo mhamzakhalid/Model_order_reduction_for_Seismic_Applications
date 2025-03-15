@@ -2,10 +2,8 @@
 
 % This file describes the code to reproduce various figures in the manuscript.
 % Some codes may run for several days depending on the computational architecture.
-% Note: the execution must be done in the increasing order of
-% CaseIDs
-% of Case IDs. By running this file, the user can select from the available
-% Case IDs. 
+% Note: the execution must be done in the increasing order of CaseIDs
+% By running this file, the user can select from the available Case IDs. 
 % -------------------------------------------------------------------------
 % Figures and Instructions:
 %
@@ -50,14 +48,14 @@
 %   - Output: POD_Coarse.png (Illustration of results)
 %   - CaseID: '8bc'
 %
-% Figure 9:
+% Figure 9: - Construct ROM for Case 1
 %   - Functionfile: Figure_9abc_12b_Plot(CaseROM, Pchange, Ntrain, Nkmax)
 %   - Inputs:
 %       For Case 1: CaseROM = 1, Pchange = 30, Ntrain = 512, Nkmax = 300 
 %   - Outputs: ROM_PODGreedy_m.mat, ROM_Greedy_m.mat, Reduction_PODGreedy_and_Greedy_Fig9.png
 %   - CaseID: '9'
 %
-% Figure 11a:
+% Figure 11a: - Test ROM for Case 1
 %   - Functionfile: Figure_11a_Plot(CaseROM, Pchange, Ntest,ROM_PODGreedy_m,ROM_Greedy_m, Nbasis)
 %   - Inputs:
 %       CaseROM = 1, Pchange = 30, Ntest = 128 
@@ -66,7 +64,7 @@
 %   - Outputs: Errors_reduction_m.mat, Reduction_Test_PODGreedy_and_Greedy_Fig11a.png
 %   - CaseID: '11a'
 %
-% Figure 11 (b):
+% Figure 11 (b): - Compute and seismograms
 %   - Functionfile: Figure_11b_Plot(ROM_PODGreedy_m,ROM_Greedy_m,Nb)
 %   - Input: ROMs from Case 9 and Nb = maximum number of RB functions used
 %   - Output: SeismogramHcompTD_PODGreedy_and_Greedy_Fig11b.png
@@ -79,7 +77,7 @@
 %              Reduction_PODGreedy_Fig12C2.png (Illustration)
 %   - CaseID: '12b'
 %
-% Figure 12 (c) ~ - Test ROM for Case 2:
+% Figure 12 (c) - Test ROM for Case 2:
 %   - Functionfile:Figure_12c_Plot(Pchange,ROM_PODGreedy_m_C2,Ntest);
 %   - Input: Pchange = 10 (or 5), ROM_PODGreedy_m_C2 from CaseID 12b, Ntest = 128
 %   - Outputs: Errors_reduction_m_Case2.mat, Reduction_Test_PODGreedy_Case2_Fig12c.png
@@ -149,7 +147,7 @@ switch CaseID
         alpha = [1.0*pi, 1.5*pi, 2.0*pi];
         Ntrain = 512;
 
-        % Ensure the following files are computed from CaseID 4
+        % Ensure the following files are pre-computed from CaseID 4
          load('ROM_POD_s.mat','ROM_POD')
          load('ROM_Greedy_s.mat','ROM_Greedy')
          load('ROM_SPOD_s.mat','ROM_SPOD')
@@ -192,7 +190,7 @@ switch CaseID
         disp('Running Figure 11a testing ROMs');
         % Inputs for Figure 11a:
         CaseROM = 1; Pchange = 30; Ntest = 128; 
-        % Ensure the following files exists from Case 9
+        % Ensure the following files are pre-computed from Case 9
         load('ROM_PODGreedy_m.mat','ROM_PODGreedy_m')
         load('ROM_Greedy_m.mat','ROM_Greedy_m')
 
@@ -205,7 +203,7 @@ switch CaseID
 
     case '11b'
         disp('Running Figure 11 (b) Case 1 seismograms plot');
-        % First compute ROM_PODGreedy_m and ROM_Greedy_m by using Case ID 9
+        % Ensure the following files are pre-computed from Case 9
         load('ROM_PODGreedy_m.mat','ROM_PODGreedy_m')
         load('ROM_Greedy_m.mat','ROM_Greedy_m')
         
@@ -234,7 +232,8 @@ switch CaseID
         % Input for Figure 10c:
         Pchange = 10;  % Alternatively, Pchange can be 5
         Ntest = 128;
-        load('ROM_PODGreedy_m_C2.mat','ROM_PODGreedy_m_C2') % First compute ROM_PODGreedy_m_C2 in Case 12b
+        % Ensure the following files are pre-computed from Case 12b
+        load('ROM_PODGreedy_m_C2.mat','ROM_PODGreedy_m_C2') 
         
         Figure_12c_Plot(Pchange,ROM_PODGreedy_m_C2,Ntest);
         % Outputs: Errors_reduction_m_Case2.mat, (Data)
