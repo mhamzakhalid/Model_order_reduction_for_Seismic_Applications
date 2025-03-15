@@ -1,5 +1,5 @@
 %%% This file contains the script file to test reduced order models
-function Figure_9bc_Plot()
+function Figure_11b_Plot(ROM_PODGreedy_m,ROM_Greedy_m,Nb)
 
 %% Input Parameters 
 addpath('FOM_DATA')
@@ -76,7 +76,6 @@ K_splitHFM = cellfun(@(lam, mu, Kl, Ku) lam * Kl + mu * Ku, num2cell(lam_rand(ra
 % Computing time domain seismograms using Newmark-beta method
 [seismo_NBMx,seismo_NBMy] = solveTimeNewmark(HFM,var_para);
 
-Nb = 300; % Maximum number of RB functions to be used 
    
 %%%%%%%%%%%%%%%%
 Aq = cell(11,1);
@@ -87,9 +86,6 @@ for qa = 2:6
 end
 
 %% POD-Greedy algorithm test
-% loading the ROM
-load('ROM_PODGreedy_m.mat','ROM_PODGreedy_m')
-%%
  addpath('Reduced_basis_methods/')
 
 Vk_it = ROM_PODGreedy_m.V(:,1:Nb);
@@ -121,12 +117,6 @@ fprintf('Error POD-Greedy vsvs NBM: %2.2e\n',Error_seismoTDL2_PODGreedy_NBM)
 
 
 % Greedy algorithm test
-
-load('ROM_Greedy_m.mat','ROM_Greedy_m')
-
- %
-
-
 Vk_it = ROM_Greedy_m.V(:,1:Nb);
 
        
@@ -189,7 +179,7 @@ hold off
 set(gca, 'FontName', 'Arial','FontSize',16)
 xlabel('Time (sec)','Interpreter','latex')
 ylabel('Horizontal Component','Interpreter','latex')
-legend('Newmark-beta method','POD-Greedy approx.','Greedy approx.','Interpreter','latex','numcolumns',2,'Location','southwest')
+legend('Newmark-beta method','POD$_s$-Greedy$_m$ approx.','Greedy$_{(s,m)}$ approx.','Interpreter','latex','numcolumns',2,'Location','southwest')
 
 legend boxoff
 ylim([-1 1])
@@ -204,7 +194,7 @@ ylim([-2e-3 2e-3])
 set(gca, 'FontName', 'Arial','FontSize',16)
 xlabel('Time (sec)','Interpreter','latex')
 ylabel('Error','Interpreter','latex')
-saveas(gcf,'SeismogramHcompTD_PODGreedy_and_Greedy_Fig9bc.png')
+saveas(gcf,'SeismogramHcompTD_PODGreedy_and_Greedy_Fig11b.png')
 
 %%
 figure(3)
@@ -219,7 +209,7 @@ hold off
 set(gca, 'FontName', 'Arial','FontSize',16)
 xlabel('Time (sec)','Interpreter','latex')
 ylabel('Vertical Component','Interpreter','latex')
-legend('Newmark-beta method','POD-Greedy approx.','Greedy approx.','Interpreter','latex','numcolumns',2,'Location','southwest')
+legend('Newmark-beta method','POD$_s$-Greedy$_m$ approx.','Greedy$_{(s,m)}$ approx.','Interpreter','latex','numcolumns',2,'Location','southwest')
 ylim([-1 1])
 
 legend boxoff
@@ -235,7 +225,7 @@ xlabel('Time (sec)','Interpreter','latex')
 ylabel('Error','Interpreter','latex')
 
 rmpath('FOM_DATA')
-saveas(gcf,'SeismogramVcompTD_PODGreedy_and_Greedy_Fig9bc.png')
+saveas(gcf,'SeismogramVcompTD_PODGreedy_and_Greedy_Fig11b.png')
 close all
 
 end
