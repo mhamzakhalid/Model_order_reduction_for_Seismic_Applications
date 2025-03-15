@@ -1,4 +1,4 @@
-function HFM = assemblesystemv2(HFM,var_para)
+function HFM = assemblesystem(HFM,var_para)
 
 bd = [HFM.bdbot;HFM.bdleft;HFM.bdright]; % Dirichlet u=0 boundary condition on bottom left and right
 HFM.ibcd = [2*bd - 1; 2*bd]; % indices for both horizontal and vertical displacement 
