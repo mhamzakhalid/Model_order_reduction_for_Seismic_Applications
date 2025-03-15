@@ -1,4 +1,4 @@
-function Figure_3_Plot(width_all,Ntrain)
+function Figure_4_Plot(width_all,Ntrain)
 %parpool(8)
 %% Input Parameters 
 addpath('FOM_DATA')
@@ -20,7 +20,6 @@ ldualnorm = sqrt(abs(Rec'*Output_Riesz));
 source_Riesz=Q_X*(U_X\(L_X\(P_X*bi_HFM)));
 fdualnorm = sqrt(abs(bi_HFM'*source_Riesz));
 
-%width_all = 1*pi;%[1.0 1.5 2.0]*pi;
 
 %%
 Aq = cell(2,1);
@@ -115,7 +114,7 @@ for wid = 1:numel(width_all)
     hold on
     xlim([0 200])
     yticks([1e-3 1e-1  1e2 1e4])
-    ylim([1e-3 1e4])
+    ylim([1e-4 1e4])
     
     xlabel('No. of RB functions: $N_k$','interpreter','latex')
     ylabel('$\max_{s \in \tilde{I}_s} [\Delta_{k,f}(s)]_{0}$','interpreter','latex')
@@ -132,10 +131,11 @@ for wid = 1:numel(width_all)
     legend('$\alpha=1.0\pi$','$\alpha=1.5\pi$','$\alpha=2.0\pi$','interpreter','latex','Location','northeast')
     set(gca, 'FontName', 'Arial','FontSize',29)
     legend boxoff
+    ylim([1e-4 1e4])
 
 end
 set(gcf,'position',[200,550,1550,500])
-saveas(gcf,'Reduction_POD_and_Greedy_Fig3.png')
+saveas(gcf,'Reduction_POD_and_Greedy_Fig4.png')
 
 
 close all
