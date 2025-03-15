@@ -45,8 +45,8 @@ brown = [171 104 87]./255;
 purple = [144 103 167]./255;
 cl_colorslight = {blue, red, black, ...
              green, brown, purple};
-scalingEstimator = 10*1e-5;
-scalingUpperbound =10*2e-3;
+scalingEstimator = 1;
+scalingUpperbound = 1;
 
 %% Weeks method time approximation
 % Step 1: find z(sWeek_j)
@@ -189,7 +189,7 @@ switch CaseROM
                 '$e_k(m)=\|\hat{e}_k(m)\|_{L^2}$','Interpreter','latex','Location','southwest')
         legend boxoff
         ylabel('$\max_{m\in\Xi_m} [e_k(m)]_{rel}$','Interpreter','latex')
-        ylim([1e-4 4e2])
+        ylim([1e-4 1e7])
         
         % Figure 8 (a) Effectivity
         subplot(1,3,2)
@@ -200,7 +200,7 @@ switch CaseROM
         semilogy(bids,ROM_PODGreedy_m.maxEstimatorm(bids)*scalingEstimator./ROM_PODGreedy_m.maxTrueL2m(bids),'->','Color',cl_colorsdark{2},'LineWidth',3,'Markersize',12,'Markerindices',mark_id)
         hold off
         set(gca, 'FontName', 'Arial','FontSize',29)
-        ylim([1e-4 4e2])
+        ylim([1e-4 1e7])
         hold off
         xlabel('No. of RB functions: $N_k$','Interpreter','latex')
         legend('$\frac{\max_{m\in\Xi_m} \Delta_{k,t}(m)}{\max_{m\in\Xi_m} \widetilde{\Delta}_{k,t}(m)}$',...
@@ -223,10 +223,10 @@ switch CaseROM
                 '$e_k(m)=\|\hat{e}_k(m)\|_{L^2}$','Interpreter','latex','Location','southwest')
         legend boxoff
         ylabel('$\max_{m\in\Xi_m} [e_k(m)]_{rel}$','Interpreter','latex')
-        ylim([1e-4 4e2])
+        ylim([1e-4 1e7])
         
         set(gcf,'position',[200,550,1550,500])
-        saveas(gcf,'Reduction_PODGreedy_and_Greedy_Fig8.png')
+        saveas(gcf,'Reduction_PODGreedy_and_Greedy_Fig9.png')
         close all
 
 
@@ -249,9 +249,9 @@ switch CaseROM
                 '$e_k(m)=\|\hat{e}_k(m)\|_{L^2}$','Interpreter','latex','Location','southwest')
         legend boxoff
         ylabel('$\max_{m\in\Xi_m} [e_k(m)]_{rel}$','Interpreter','latex')
-        ylim([1e-4 4e2])
+        ylim([1e-4 1e7])
                 
-        saveas(gcf,'Reduction_PODGreedy_Fig10C2.png')
+        saveas(gcf,'Reduction_PODGreedy_Fig12C2.png')
 
 end
 rmpath('FOM_DATA')
