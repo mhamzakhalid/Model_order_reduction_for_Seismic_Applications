@@ -1,8 +1,5 @@
-function Figure_10c_Plot(Pchange)
+function Figure_12c_Plot(Pchange,ROM_PODGreedy_m_C2)
 
-% Pchange = 0.30
-% CaseROM = 'Case 1'
-%parpool(8)
 CaseROM = 2;
 fprintf('Running Case %d with %2.2f Change\n',CaseROM,Pchange)
 CaseROM = string(CaseROM);
@@ -72,8 +69,6 @@ var_para.lam_max = maxLam;
 
 Ntest = 128;
 var_para.Ntest = Ntest;
-%% Training set
-% The solution for the following random parameters have already been computed
 
 switch CaseROM
     case '1'
@@ -101,8 +96,7 @@ end
 
 %% Computing errors
 
-load('ROM_PODGreedy_m_C2.mat','ROM_PODGreedy_m_C2')
-Nbasis = size(ROM_PODGreedy_m.V,2);
+Nbasis = size(ROM_PODGreedy_m_C2.V,2);
 basis_ids = round(linspace(2,Nbasis,15));
 Nb = numel(basis_ids);
 
@@ -120,7 +114,7 @@ Error_seismoTDL2_PODGreedy = zeros(var_para.Ntest,Nb);
 
 
 for Nk_id = 1:Nb
-        Vk_it = ROM_PODGreedy_m.V(:,1:basis_ids(Nk_id));
+        Vk_it = ROM_PODGreedy_m_C2.V(:,1:basis_ids(Nk_id));
 
        % 
        %  %%%%%%%%%%%%%% Project
