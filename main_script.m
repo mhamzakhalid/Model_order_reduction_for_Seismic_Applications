@@ -225,7 +225,7 @@ switch CaseID
         Nkmax = 450;
         Figure_9abc_12b_Plot(CaseROM, Pchange, Ntrain, Nkmax);
         % Outputs: ROM_PODGreedy_m_C2.mat, (ROM for Case 2)
-        % Reduction_PODGreedy_Fig10C2.png (Illustration of results)
+        % Reduction_PODGreedy_Fig12C2.png (Illustration of results)
 
     case '12c'
         disp('Running Figure 12c ROM test for Case 2...');
