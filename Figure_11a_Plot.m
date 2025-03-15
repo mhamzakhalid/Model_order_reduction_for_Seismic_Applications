@@ -1,8 +1,5 @@
-function Figure_9a_Plot(CaseROM,Pchange,Ntest)
+function Figure_11a_Plot(CaseROM,Pchange,Ntest,ROM_PODGreedy_m,ROM_Greedy_m,Nbasis)
 
-% Pchange = 0.30
-% CaseROM = 'Case 1'
-%parpool(8)
 fprintf('Running Case %d with %2.2f Change\n',CaseROM,Pchange)
 CaseROM = string(CaseROM);
 
@@ -57,7 +54,7 @@ Ns_LF = numel(s_LF); % No of low-frequencies.
     
 RICKLF = eval(var_para.source(var_para.Amp,var_para.width,var_para.t0,s_LF.')); %Ricker source at low-frequencies (The transpose in s_LF is only for the reasons concerning compatibility matrix/vector operations)
 
-%% Training set for 30% change
+%% Training set for Pchange% change
 minLam = abs(var_para.lami-Pchange*(var_para.lami));%
 maxLam = abs(var_para.lami+Pchange*(var_para.lami));
 
@@ -69,7 +66,6 @@ var_para.lam_min = minLam;
 var_para.mui_max = maxmu;
 var_para.lam_max = maxLam;
 
-%Ntest = 128;
 var_para.Ntest = Ntest;
 %% Training set
 % The solution for the following random parameters have already been computed
@@ -99,12 +95,7 @@ end
  fprintf('Done FOM solutions for error comparisons\n')
 
 %% Computing errors
-if CaseROM == '1'
-    load('ROM_PODGreedy_m.mat','ROM_PODGreedy_m')
-else
-    load('ROM_PODGreedy_m_C2.mat','ROM_PODGreedy_m')
-end
-Nbasis = size(ROM_PODGreedy_m.V,2);
+
 basis_ids = round(linspace(2,Nbasis,15));
 Nb = numel(basis_ids);
 
@@ -156,9 +147,7 @@ fprintf('ROM Errors for POD-Greedy done\n')
 %% Greedy algorithm test
 if CaseROM == '1'
     Error_seismoTDL2_Greedy = zeros(var_para.Ntest,Nb);
-    
-    load('ROM_Greedy_m.mat','ROM_Greedy_m')
-    
+        
     for Nk_id = 1:Nb
             Vk_it = ROM_Greedy_m.V(:,1:basis_ids(Nk_id));
            %  %%%%%%%%%%%%%% Project
@@ -199,27 +188,27 @@ if CaseROM == '1'
     errorbarlog(basis_ids,mean(Error_seismoTDL2_PODGreedy,1),std(Error_seismoTDL2_PODGreedy,1),':','linewidth',3,'Markersize',8)
     hold on
     errorbarlog(basis_ids,mean(Error_seismoTDL2_Greedy,1),std(Error_seismoTDL2_Greedy,1),':','linewidth',3,'Markersize',8)
-    legend('POD-Greedy algorithm','Greedy algorithm','Interpreter','latex')
+    legend('POD$_s$-Greedy$_m$ algorithm','Greedy$_{(s,m)}$ algorithm','Interpreter','latex')
     xlabel('No. of RB functions: $N_k$','Interpreter','latex')
     ylabel('Mean$_{m\in\Xi_{t}}[\|\hat{e}_k(m)\|_{L^2}]_{rel}$','Interpreter','latex')
     hold off
     legend boxoff
     set(gca, 'FontName', 'Arial','FontSize',29)
     
-    saveas(gcf,'Reduction_Test_PODGreedy_and_Greedy_Fig9a.png')
+    saveas(gcf,'Reduction_Test_PODGreedy_and_Greedy_Fig11a.png')
 else
 
     figure(1)
     set(gcf,'position',[200,550,550,500])
     errorbarlog(basis_ids,mean(Error_seismoTDL2_PODGreedy,1),std(Error_seismoTDL2_PODGreedy,1),':','linewidth',3,'Markersize',8)
-    legend('POD-Greedy algorithm','Interpreter','latex')
+    legend('POD$_s$-Greedy$_m$ algorithm','Interpreter','latex')
     xlabel('No. of RB functions: $N_k$','Interpreter','latex')
     ylabel('Mean$_{m\in\Xi_{t}}[\|\hat{e}_k(m)\|_{L^2}]_{rel}$','Interpreter','latex')
     hold off
     legend boxoff
     set(gca, 'FontName', 'Arial','FontSize',29)
     
-    saveas(gcf,'Reduction_Test_PODGreedy_Case2_Fig10.png')
+    saveas(gcf,'Reduction_Test_PODGreedy_Case2_Fig12.png')
 
 
     save('Errors_reduction_mCase2.mat','basis_ids','Error_seismoTDL2_PODGreedy')
@@ -227,9 +216,6 @@ else
 end
 
 end
-
-%% Plotting 
-
 
 %% Function for plotting
 function hh = errorbarlog(varargin)
