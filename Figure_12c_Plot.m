@@ -1,4 +1,4 @@
-function Figure_12c_Plot(Pchange,ROM_PODGreedy_m_C2)
+function Figure_12c_Plot(Pchange,ROM_PODGreedy_m_C2,Ntest)
 
 CaseROM = 2;
 fprintf('Running Case %d with %2.2f Change\n',CaseROM,Pchange)
@@ -67,7 +67,6 @@ var_para.lam_min = minLam;
 var_para.mui_max = maxmu;
 var_para.lam_max = maxLam;
 
-Ntest = 128;
 var_para.Ntest = Ntest;
 
 switch CaseROM
